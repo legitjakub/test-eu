@@ -479,6 +479,15 @@ function renderGrid() {
     });
   });
 
+  const compactGrid = hasActiveFilters() && visibleSlots > 0 && visibleSlots <= 2;
+  grid.classList.toggle("program-grid--few-rows", compactGrid);
+  grid.classList.toggle("program-grid--single-row", hasActiveFilters() && visibleSlots === 1);
+  if (compactGrid) {
+    grid.style.setProperty("--visible-rows", String(visibleSlots));
+  } else {
+    grid.style.removeProperty("--visible-rows");
+  }
+
   els.empty.classList.toggle("is-hidden", visibleSlots > 0);
 }
 

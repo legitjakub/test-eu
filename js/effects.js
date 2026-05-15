@@ -160,10 +160,21 @@ export function createEffects({ getState, t }) {
           }
         });
       },
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.06, rootMargin: "0px 0px -24px 0px" }
     );
 
-    document.querySelectorAll(".time-block, .program-grid__cell--time").forEach((el) => {
+    document.querySelectorAll(".time-block").forEach((block) => {
+      block.classList.add("reveal-on-scroll");
+      observer.observe(block);
+
+      block.querySelectorAll(".mobile-card").forEach((card, index) => {
+        card.classList.add("reveal-on-scroll");
+        card.style.setProperty("--reveal-delay", `${index * 70}ms`);
+        observer.observe(card);
+      });
+    });
+
+    document.querySelectorAll(".program-grid__cell--time").forEach((el) => {
       el.classList.add("reveal-on-scroll");
       observer.observe(el);
     });
