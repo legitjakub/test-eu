@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 72" role="img" aria-label="Dom zahraniní spolupráce">
+  <defs>
+    <linearGradient id="dzs-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563a8"/>
+      <stop offset="100%" stop-color="#13406e"/>
+    </linearGradient>
+  </defs>
+  <!-- House / cooperation symbol -->
+  <path fill="url(#dzs-blue)" d="M8 32 L24 18 L40 32 V56 H8 Z"/>
+  <rect fill="#f38b4c" x="18" y="38" width="12" height="18" rx="1"/>
+  <path fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" d="M14 32 L24 22 L34 32"/>
+  <!-- DZS wordmark -->
+  <text x="52" y="38" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#13406e">DZS</text>
+  <text x="52" y="58" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="600" fill="#2563a8" letter-spacing="0.02em">Dom zahraniní spolupráce</text>
+</svg>

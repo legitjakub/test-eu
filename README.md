@@ -23,7 +23,7 @@ Poté otevřete [http://localhost:8080](http://localhost:8080).
 | `index.html` | Kostra stránky, filtry, legenda |
 | `data/program.json` | **Editovatelná data** – časy, místnosti, přednášky, témata |
 | `css/styles.css` | Vizuální styl (inspirovaný přiloženým obrázkem) |
-| `js/program.js` | Vykreslení tabulky + mobilní karty, filtry, živý režim |
+| `js/program.js` | Vykreslení tabulky + mobilní karty, filtry, i18n |
 
 ## Popis řešení (zadání)
 
@@ -50,9 +50,10 @@ Data jsou oddělena od prezentace v `program.json`, aby šel program upravovat b
 
 | Funkce | Stav | Poznámka |
 |--------|------|----------|
-| Filtrování místnosti / tématu | ✅ | Select filtry, ztlumení/skrytí neodpovídajících buněk |
-| Živý režim (aktuální čas) | ✅ | Tlačítko „Živý režim“, zvýraznění řádku podle `event.date` v JSON |
+| Filtrování místnosti / tématu / hledání | ✅ | Chips + vyhledávání, počítadlo zobrazených přednášek |
+| Modal přednášky + Google Calendar | ✅ | Klik na přednášku, přidání do kalendáře |
 | Tisk / PDF | ✅ | `@media print` + tlačítko `window.print()` |
+| CS / EN překlady | ✅ | Přepínač jazyka, titulky přednášek v `js/i18n.js` |
 | Vícedenní program | 🔜 | V JSON přidat pole `day` u slotů + přepínač dnů v UI |
 | WordPress integrace | 🔜 | Custom post type nebo ACF repeater generující stejný JSON |
 | Export PDF server-side | 🔜 | Např. Puppeteer pro přesnější PDF než tisk z prohlížeče |

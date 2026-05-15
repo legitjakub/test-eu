@@ -5,75 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
+      data-i18n-content="metaDescription"
       content="Program konference CEEDUCON – přehledný harmonogram podle času a místností."
     />
-    <title>Program konference | CEEDUCON</title>
+    <title data-i18n="metaTitle">Program konference | CEEDUCON</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=25" />
   </head>
   <body>
-    <a class="skip-link" href="#program-main">Přeskočit na program</a>
+    <a class="skip-link" href="#program-main" data-i18n="skipLink">Přeskočit na program</a>
+
+    <div class="page-bg" aria-hidden="true"></div>
 
     <header class="site-header">
-      <div class="site-header__inner">
+      <div class="site-header__inner container">
         <div class="site-header__brand">
-          <p class="site-header__eyebrow">DZS · CEEDUCON</p>
-          <h1 class="site-header__title">Program konference</h1>
+          <img
+            class="site-header__logo"
+            src="assets/dzs-logo.png"
+            width="1024"
+            height="522"
+            alt="Dům zahraniční spolupráce"
+          />
+          <div>
+            <h1 class="site-header__title" data-i18n="pageTitle">Program konference</h1>
+            <p class="site-header__eyebrow" data-i18n="eyebrow">CEEDUCON 2026</p>
+          </div>
         </div>
-        <div class="site-header__actions" role="toolbar" aria-label="Nástroje programu">
-          <button type="button" class="btn btn--ghost" id="live-toggle" aria-pressed="false">
-            <span class="btn__dot" aria-hidden="true"></span>
-            Živý režim
+        <div class="site-header__actions header-tools" role="toolbar" data-i18n-aria="toolsAria">
+          <div class="lang-switch" role="group" aria-labelledby="lang-label">
+            <span class="visually-hidden" id="lang-label" data-i18n="langLabel">Jazyk</span>
+            <button type="button" class="lang-switch__btn is-active" data-lang="cs" aria-pressed="true">CS</button>
+            <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button type="button" class="btn btn--tool" id="print-btn">
+            <svg class="btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9V2h12v7M6 18H4v-7h16v7h-2M6 14h12v8H6v-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="btn__label" data-i18n="print">Tisk / PDF</span>
           </button>
-          <button type="button" class="btn btn--primary" id="print-btn">Tisk / PDF</button>
         </div>
       </div>
     </header>
 
-    <main id="program-main" class="program">
-      <section class="filters" aria-label="Filtry programu">
-        <div class="filters__group">
-          <label class="filters__label" for="filter-room">Místnost</label>
-          <select class="filters__select" id="filter-room">
-            <option value="">Všechny místnosti</option>
-          </select>
+    <main id="program-main" class="program container">
+      <section class="toolbar panel" data-i18n-aria="toolbarAria">
+        <div class="toolbar__search">
+          <label class="visually-hidden" for="search-input" data-i18n="searchLabel">Hledat v programu</label>
+          <svg class="toolbar__search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="M20 20l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            class="toolbar__input"
+            data-i18n-placeholder="searchPlaceholder"
+            placeholder="Hledat přednášku…"
+            autocomplete="off"
+          />
         </div>
-        <div class="filters__group">
-          <label class="filters__label" for="filter-theme">Téma</label>
-          <select class="filters__select" id="filter-theme">
-            <option value="">Všechna témata</option>
-          </select>
-        </div>
-        <button type="button" class="filters__reset" id="filter-reset">Zrušit filtry</button>
       </section>
 
-      <section class="legend" id="legend" aria-label="Legenda témat"></section>
+      <section class="panel legend-panel" data-i18n-aria="legendAria">
+        <p class="legend-panel__hint" data-i18n="themesHint">Kliknutím na štítek filtrujete program</p>
+        <p class="filter-status is-hidden" id="filter-status" aria-live="polite"></p>
 
-      <section class="program-grid-wrap" aria-label="Program v tabulce">
+        <div class="filter-tags">
+          <div class="filter-tags__group">
+            <span class="filter-tags__label" data-i18n="themesTitle">Témata</span>
+            <div class="filter-tags__chips">
+              <div class="legend" id="legend"></div>
+              <button type="button" class="filter-reset" id="filter-reset">
+                <svg class="filter-reset__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                <span data-i18n="resetFilters">Zrušit filtry</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="filter-tags__group">
+            <span class="filter-tags__label" data-i18n="roomLabel">Místnost</span>
+            <div class="filter-tags__chips filter-tags__chips--rooms">
+              <div class="room-chips" id="room-chips" data-i18n-aria="roomChipsAria"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="program-grid-wrap panel" data-i18n-aria="gridAria">
         <div class="program-grid-scroll">
-          <div class="program-grid" id="program-grid" role="table" aria-label="Harmonogram konference"></div>
+          <div class="program-grid" id="program-grid" role="table"></div>
         </div>
       </section>
 
-      <section class="program-mobile" id="program-mobile" aria-label="Program – mobilní zobrazení"></section>
+      <section class="program-mobile" id="program-mobile" data-i18n-aria="mobileAria"></section>
 
-      <p class="program__empty is-hidden" id="program-empty" role="status">
-        Žádná přednáška neodpovídá zvoleným filtrům.
-      </p>
+      <div class="empty-state is-hidden" id="program-empty" role="status">
+        <div class="empty-state__icon" aria-hidden="true">∅</div>
+        <p class="empty-state__title" data-i18n="emptyTitle">Nic nenalezeno</p>
+        <p class="empty-state__text" data-i18n="emptyText">Zkuste upravit filtry nebo hledaný výraz.</p>
+        <button type="button" class="btn btn--secondary empty-state__reset" id="empty-reset" data-i18n="resetFilters">Zrušit filtry</button>
+      </div>
+
+      <div class="load-error is-hidden" id="load-error" role="alert">
+        <p class="load-error__text" id="load-error-text"></p>
+      </div>
     </main>
 
     <footer class="site-footer">
-      <p>
-        Úkol Webmaster/ka · DZS · Data programu lze upravit v souboru
-        <code>data/program.json</code>
-      </p>
+      <div class="container site-footer__inner">
+        <p class="site-footer__text" data-i18n="footerText">Program konference CEEDUCON 2026 · pořádá Dům zahraniční spolupráce</p>
+        <a class="site-footer__logo-link" href="https://www.dzs.cz/" target="_blank" rel="noopener noreferrer">
+          <img
+            class="site-footer__logo"
+            src="assets/dzs-logo.png"
+            width="1024"
+            height="522"
+            alt="Dům zahraniční spolupráce"
+          />
+        </a>
+      </div>
     </footer>
 
-    <script src="js/program.js" type="module"></script>
+    <script src="js/program.js?v=25" type="module"></script>
   </body>
 </html>

@@ -8,22 +8,22 @@
     {
       "id": "smart",
       "label": "Smart & Sustainable International Cooperation",
-      "color": "#5eb8e8"
+      "color": "#4c84bc"
     },
     {
       "id": "internationalisation",
       "label": "Internationalisation for All",
-      "color": "#e85a9a"
+      "color": "#da445a"
     },
     {
       "id": "partnerships",
       "label": "Global & Regional Partnerships",
-      "color": "#f5c542"
+      "color": "#f1b504"
     },
     {
       "id": "alumni",
       "label": "Alumni — Employability — Future Skills",
-      "color": "#6bc04a"
+      "color": "#925e47"
     }
   ],
   "slots": [
@@ -64,7 +64,7 @@
         {
           "rooms": ["D2"],
           "title": "Unlocking Opportunities: European Solidarity Corps programme",
-          "theme": "smart"
+          "theme": "internationalisation"
         },
         {
           "rooms": ["D3+D4"],
