@@ -525,6 +525,18 @@ body {
   }
 }
 
+.filter-tags__footer {
+  display: flex;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--slate-200);
+}
+
+@media (min-width: 640px) {
+  .filter-tags__footer {
+    padding-left: 5.25rem;
+  }
+}
+
 .filter-reset {
   display: inline-flex;
   align-items: center;
@@ -541,7 +553,6 @@ body {
   white-space: nowrap;
   transition: var(--transition);
   opacity: 0.45;
-  flex-shrink: 0;
 }
 
 .filter-reset.is-active {

@@ -208,6 +208,16 @@ function bindEvents() {
   });
 
   els.printBtn.addEventListener("click", () => window.print());
+
+  window.addEventListener("beforeprint", () => {
+    if (!DESKTOP_MQ.matches) renderGrid();
+    document.body.classList.add("is-printing");
+  });
+
+  window.addEventListener("afterprint", () => {
+    document.body.classList.remove("is-printing");
+    if (!DESKTOP_MQ.matches) render();
+  });
 }
 
 function resetFilters() {
