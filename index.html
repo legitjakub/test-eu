@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Program konference CEEDUCON – přehledný harmonogram podle času a místností."
+    />
+    <title>Program konference | CEEDUCON</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#program-main">Přeskočit na program</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="site-header__brand">
+          <p class="site-header__eyebrow">DZS · CEEDUCON</p>
+          <h1 class="site-header__title">Program konference</h1>
+        </div>
+        <div class="site-header__actions" role="toolbar" aria-label="Nástroje programu">
+          <button type="button" class="btn btn--ghost" id="live-toggle" aria-pressed="false">
+            <span class="btn__dot" aria-hidden="true"></span>
+            Živý režim
+          </button>
+          <button type="button" class="btn btn--primary" id="print-btn">Tisk / PDF</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="program-main" class="program">
+      <section class="filters" aria-label="Filtry programu">
+        <div class="filters__group">
+          <label class="filters__label" for="filter-room">Místnost</label>
+          <select class="filters__select" id="filter-room">
+            <option value="">Všechny místnosti</option>
+          </select>
+        </div>
+        <div class="filters__group">
+          <label class="filters__label" for="filter-theme">Téma</label>
+          <select class="filters__select" id="filter-theme">
+            <option value="">Všechna témata</option>
+          </select>
+        </div>
+        <button type="button" class="filters__reset" id="filter-reset">Zrušit filtry</button>
+      </section>
+
+      <section class="legend" id="legend" aria-label="Legenda témat"></section>
+
+      <section class="program-grid-wrap" aria-label="Program v tabulce">
+        <div class="program-grid-scroll">
+          <div class="program-grid" id="program-grid" role="table" aria-label="Harmonogram konference"></div>
+        </div>
+      </section>
+
+      <section class="program-mobile" id="program-mobile" aria-label="Program – mobilní zobrazení"></section>
+
+      <p class="program__empty is-hidden" id="program-empty" role="status">
+        Žádná přednáška neodpovídá zvoleným filtrům.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Úkol Webmaster/ka · DZS · Data programu lze upravit v souboru
+        <code>data/program.json</code>
+      </p>
+    </footer>
+
+    <script src="js/program.js" type="module"></script>
+  </body>
+</html>
