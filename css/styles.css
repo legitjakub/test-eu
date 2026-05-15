@@ -407,7 +407,7 @@ body {
 
 /* Legend & filter tags */
 .legend-panel {
-  padding: 1.25rem 1.25rem 1rem;
+  padding: 1.25rem 1.25rem 0.35rem;
 }
 
 .legend-panel__hint {
@@ -527,13 +527,16 @@ body {
 
 .filter-tags__footer {
   display: flex;
-  padding-top: 0.25rem;
+  padding: 1rem 0 0.75rem;
+  margin-top: 0;
   border-top: 1px solid var(--slate-200);
 }
 
 @media (min-width: 640px) {
   .filter-tags__footer {
+    padding: 0.85rem 0 0.65rem;
     padding-left: 5.25rem;
+    border-top: none;
   }
 }
 
@@ -938,9 +941,16 @@ body {
     gap: 1rem;
   }
 
-  .toolbar,
-  .legend-panel {
+  .toolbar {
     padding: 1rem;
+  }
+
+  .legend-panel {
+    padding: 1rem 1rem 0.35rem;
+  }
+
+  .filter-tags__footer {
+    padding: 1.15rem 0 0.75rem;
   }
 
   .legend__chip {
