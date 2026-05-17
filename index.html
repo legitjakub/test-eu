@@ -15,14 +15,16 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=48" />
+    <link rel="stylesheet" href="css/styles.css?v=56" />
+    <link rel="stylesheet" href="css/enhancements.css?v=56" />
   </head>
   <body>
+    <div class="dzs-topbar" aria-hidden="true"></div>
     <a class="skip-link" href="#program-main" data-i18n="skipLink">Přeskočit na program</a>
 
     <div class="page-bg" aria-hidden="true"></div>
 
-    <header class="site-header">
+    <header class="site-header header-enter">
       <div class="site-header__inner container">
         <div class="site-header__brand">
           <img
@@ -124,19 +126,22 @@
 
     <footer class="site-footer">
       <div class="container site-footer__inner">
-        <p class="site-footer__text" data-i18n="footerText">Program konference CEEDUCON 2026 · pořádá Dům zahraniční spolupráce</p>
+        <div>
+          <p class="site-footer__text" data-i18n="footerText">Program konference CEEDUCON 2026 · pořádá Dům zahraniční spolupráce</p>
+          <p class="site-footer__eu" data-i18n="footerEu">Projekt spolufinancovaný z prostředků Evropské unie v rámci programu Erasmus+</p>
+        </div>
         <a class="site-footer__logo-link" href="https://www.dzs.cz/" target="_blank" rel="noopener noreferrer">
           <img
             class="site-footer__logo"
-            src="assets/dzs-logo.png"
-            width="1024"
-            height="522"
+            src="assets/dzs-logo.svg"
+            width="280"
+            height="72"
             alt="Dům zahraniční spolupráce"
           />
         </a>
       </div>
     </footer>
 
-    <script src="js/program.js?v=48" type="module"></script>
+    <script src="js/program.js?v=56" type="module"></script>
   </body>
 </html>
