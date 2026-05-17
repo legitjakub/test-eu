@@ -15,14 +15,16 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=48" />
+    <link rel="stylesheet" href="css/styles.css?v=53" />
+    <link rel="stylesheet" href="css/enhancements.css?v=53" />
   </head>
   <body>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
     <a class="skip-link" href="#program-main" data-i18n="skipLink">Přeskočit na program</a>
 
     <div class="page-bg" aria-hidden="true"></div>
 
-    <header class="site-header">
+    <header class="site-header header-enter">
       <div class="site-header__inner container">
         <div class="site-header__brand">
           <img
@@ -51,6 +53,7 @@
           </button>
         </div>
       </div>
+      <div class="site-header__accent" aria-hidden="true"></div>
     </header>
 
     <main id="program-main" class="program container">
@@ -104,7 +107,10 @@
 
       <section class="program-grid-wrap panel" data-i18n-aria="gridAria">
         <div class="program-grid-scroll">
-          <div class="program-grid" id="program-grid" role="table"></div>
+          <div class="program-grid-inner">
+            <div class="program-grid program-grid--header" id="program-grid-header" role="row"></div>
+            <div class="program-grid program-grid--body" id="program-grid" role="rowgroup"></div>
+          </div>
         </div>
       </section>
 
@@ -123,6 +129,7 @@
     </main>
 
     <footer class="site-footer">
+      <div class="site-footer__accent" aria-hidden="true"></div>
       <div class="container site-footer__inner">
         <p class="site-footer__text" data-i18n="footerText">Program konference CEEDUCON 2026 · pořádá Dům zahraniční spolupráce</p>
         <a class="site-footer__logo-link" href="https://www.dzs.cz/" target="_blank" rel="noopener noreferrer">
@@ -137,6 +144,8 @@
       </div>
     </footer>
 
-    <script src="js/program.js?v=48" type="module"></script>
+    <button type="button" class="back-to-top" id="back-to-top" data-i18n-aria="backToTop" hidden>↑</button>
+
+    <script src="js/program.js?v=53" type="module"></script>
   </body>
 </html>
