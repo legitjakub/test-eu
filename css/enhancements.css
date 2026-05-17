@@ -1,5 +1,229 @@
 /* CEEDUCON – DZS brand alignment & animation layer */
 
+/* ── 0. Tabac Sans – DZS corporate font ── */
+@font-face {
+  font-family: "Tabac Sans";
+  src:
+    url("../assets/fonts/Tabac-Sans-Regular.woff2") format("woff2"),
+    url("../assets/fonts/Tabac-Sans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tabac Sans";
+  src:
+    url("../assets/fonts/Tabac-Sans-Bold.woff2") format("woff2"),
+    url("../assets/fonts/Tabac-Sans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Nahradit font v celém projektu */
+:root {
+  --font: "Tabac Sans", "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+/* ── Base – dle DZS (html 16px, body Tabac Sans 16px) ── */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 1rem;        /* 16px */
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #161616;          /* DZS body color */
+}
+
+/* ── H1 – název konference v headeru ── */
+/* DZS: 3.25rem / 4.5rem / 700 / letter-spacing 1px, mobile 2.125rem / 3rem */
+.site-header__title {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.125rem);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+/* Eyebrow – CEEDUCON 2026 (malá uppercase) */
+.site-header__eyebrow {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.75rem;       /* 12px */
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0.2rem 0 0;
+}
+
+/* ── Záhlaví sekcí / popisky filtrů (H4 ekvivalent) ── */
+.filter-tags__label {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.75rem;       /* 12px */
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-900);
+}
+
+/* Hint nad filtry */
+.legend-panel__hint {
+  font-family: var(--font);
+  font-size: 0.875rem;      /* 14px – DZS small body */
+  font-weight: 400;
+}
+
+/* Filtrovací chipy – DZS small body */
+.legend__chip {
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: 0.875rem;      /* 14px */
+  line-height: 1.4;
+}
+
+/* ── Grid – záhlaví místností ── */
+.program-grid__cell--room {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.875rem;      /* 14px */
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Časové buňky */
+.program-grid__cell--time {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.8125rem;     /* 13px */
+  line-height: 1.3;
+}
+
+.program-grid__cell--time span:last-child {
+  font-weight: 400;
+  font-size: 0.6875rem;     /* 11px */
+}
+
+/* Session title – tělo přednášky */
+.session__title {
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: 0.8125rem;     /* 13px */
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+/* Session tag – téma */
+.session__tag {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.625rem;      /* 10px */
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Break / přestávka */
+.program-grid__cell--break,
+.program-grid__cell--plenary {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.875rem;      /* 14px */
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+/* ── Vyhledávání (DZS body 16px) ── */
+.toolbar__input {
+  font-family: var(--font);
+  font-size: 1rem;          /* 16px */
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── Tlačítka – DZS button styl ── */
+.btn,
+.lang-switch__btn {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.8125rem;     /* 13px */
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Filter reset – stejný styl */
+.filter-reset {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Patička ── */
+.site-footer__text {
+  font-family: var(--font);
+  font-size: 0.875rem;      /* 14px */
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.site-footer__eu {
+  font-family: var(--font);
+  font-size: 0.75rem;       /* 12px */
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── Modal ── */
+.session-modal__title {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 1.5rem;        /* 24px – DZS h3 */
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.session-modal__meta {
+  font-family: var(--font);
+  font-size: 0.875rem;      /* 14px */
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.session-modal__theme {
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Empty state */
+.empty-state__title {
+  font-family: var(--font);
+  font-size: 1.125rem;      /* 18px – DZS h4 */
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.empty-state__text {
+  font-family: var(--font);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
 /* ── 1. Palette cleanup – institutional over startup ── */
 :root {
   --blue-50: #f2f5f9;        /* čistá modrošedá místo teplé béžové */
@@ -68,7 +292,68 @@
   color: var(--orange-500);
 }
 
-/* ── 4. Panel stagger – entrance animace pro každý blok ── */
+/* ── 4. Header toolbar – barevné akce ── */
+
+/* Wrapper – lehký průhledný rámeček místo šedé pilulky */
+.header-tools {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(15, 51, 88, 0.12);
+  backdrop-filter: blur(6px);
+  gap: 0.2rem;
+}
+
+/* Jazykové tlačítko – neaktivní */
+.lang-switch__btn {
+  color: var(--blue-800);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.lang-switch__btn:hover {
+  background: rgba(15, 51, 88, 0.07);
+  color: var(--blue-900);
+}
+
+/* CS – aktivní: DZS červená */
+.lang-switch__btn.is-active[data-lang="cs"] {
+  background: #e8273a;
+  color: #fff;
+  box-shadow: none;
+}
+
+/* EN – aktivní: DZS modrá */
+.lang-switch__btn.is-active[data-lang="en"] {
+  background: var(--blue-700);
+  color: #fff;
+  box-shadow: none;
+}
+
+.lang-switch__btn.is-active:hover {
+  filter: brightness(1.08);
+}
+
+/* Tisk – zvýrazněné tlačítko */
+.btn--tool {
+  background: var(--orange-400);
+  color: var(--blue-900);
+  font-weight: 700;
+}
+
+.btn--tool .btn__icon {
+  color: var(--blue-900);
+}
+
+.btn--tool:hover {
+  background: var(--orange-500);
+  color: var(--white);
+  box-shadow: none;
+}
+
+.btn--tool:hover .btn__icon {
+  color: var(--white);
+}
+
+/* ── 5. Panel stagger – entrance animace pro každý blok ── */
 @keyframes panel-in {
   from {
     opacity: 0;
@@ -126,22 +411,92 @@
 /* ── 6. Záhlaví místností – původní modrý gradient ── */
 .program-grid__cell--room {
   background: linear-gradient(180deg, var(--blue-800), var(--blue-900));
+  letter-spacing: 0.03em;
 }
 
-/* ── 7. Session karty – zaoblené rohy + hover ── */
+/* ── 7. Session karty – levý barevný pruh + moderní layout ── */
 .session {
+  flex-direction: row;          /* bar vlevo místo nahoře */
   border-radius: 10px;
   overflow: hidden;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.15s ease;
 }
 
+/* Vertikální barevný pruh vlevo */
+.session__bar {
+  width: 4px;
+  height: auto;
+  min-height: 100%;
+  flex-shrink: 0;
+}
+
+/* Tělo karty – zarovnání vlevo */
+.session__body {
+  align-items: flex-start;
+  padding: 0.5rem 0.6rem;
+  gap: 0.25rem;
+}
+
+/* Tag – vlevo nahoře */
+.session__tag {
+  align-self: flex-start;
+  font-size: 0.6rem;
+  padding: 0.1rem 0.4rem;
+}
+
+/* Titulek – vlevo */
+.session__title {
+  text-align: left;
+  font-size: clamp(0.6rem, 0.72vw, 0.8125rem);
+  font-weight: 600;
+  color: var(--slate-800);
+}
+
+/* Hover efekt */
 .session--interactive:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(15, 51, 88, 0.11);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(15, 51, 88, 0.13);
+  filter: brightness(0.97);
 }
 
+/* ── Časové buňky – navy místo oranžové ── */
+.program-grid__cell--time {
+  background: var(--blue-900);
+  color: rgba(255, 255, 255, 0.95);
+  border-right: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+.program-grid__cell--time span:last-child {
+  color: rgba(255, 255, 255, 0.55);
+  opacity: 1;
+  font-weight: 400;
+}
+
+/* ── Break buňky – čistší ── */
+.program-grid__cell--break {
+  background: linear-gradient(90deg, var(--orange-100) 0%, rgba(248, 246, 244, 0.6) 100%);
+  color: var(--blue-900);
+  font-style: italic;
+  border-top: 1px solid rgba(198, 144, 16, 0.2);
+  border-bottom: 1px solid rgba(198, 144, 16, 0.2);
+}
+
+/* ── Prázdné buňky – jemný vzor ── */
+.program-grid__cell--empty {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    rgba(15, 51, 88, 0.025) 5px,
+    rgba(15, 51, 88, 0.025) 6px
+  );
+  background-color: var(--blue-50);
+}
+
+/* ── Mobile karty ── */
 .mobile-card {
   border-radius: 12px;
 }
