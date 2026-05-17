@@ -336,13 +336,35 @@ function buildSessionHTML(session, slot) {
       <span class="session__bar" style="background:${color}"></span>
       <div class="session__body">
         ${short ? `<span class="session__tag" style="background:${hexToRgba(color, 0.15)};color:${color}">${short}</span>` : ""}
-        <span class="session__title">${title}</span>
+        <span class="session__title">${formatSessionTitleHTML(title)}</span>
       </div>
     </article>`;
 }
 
 function escapeAttr(str) {
   return String(str).replace(/"/g, "&quot;");
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** Název na prvním řádku (bold), popis na druhém */
+function formatSessionTitleHTML(title) {
+  const colonIdx = title.indexOf(":");
+  if (colonIdx === -1) {
+    return `<span class="session__title-name session__title-name--solo">${escapeHtml(title)}</span>`;
+  }
+  const name = title.slice(0, colonIdx).trim();
+  const desc = title.slice(colonIdx + 1).trim();
+  if (!desc) {
+    return `<span class="session__title-name">${escapeHtml(name)}:</span>`;
+  }
+  return `<span class="session__title-name">${escapeHtml(name)}:</span><span class="session__title-desc">${escapeHtml(desc)}</span>`;
 }
 
 function buildRoomCellMap(slot) {
@@ -571,7 +593,7 @@ function renderMobile() {
               <span class="mobile-card__room">${session.rooms.join(", ")}</span>
               <span class="mobile-card__theme" style="background:${hexToRgba(color, 0.12)};color:${color}">${getThemeShort(session.theme, state.lang) || getThemeLabel(session.theme, state.lang)}</span>
             </p>
-            <h3 class="mobile-card__title">${title}</h3>
+            <h3 class="mobile-card__title">${formatSessionTitleHTML(title)}</h3>
           </div>`;
         body.appendChild(card);
       });

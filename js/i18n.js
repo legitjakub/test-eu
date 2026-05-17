@@ -11,7 +11,7 @@ export const UI = {
     print: "Tisk / PDF",
     langLabel: "Jazyk",
     searchLabel: "Hledat v programu",
-    searchPlaceholder: "Hledat přednášku…",
+    searchPlaceholder: "Hledat příspěvek…",
     roomLabel: "Místnost",
     allRooms: "Všechny místnosti",
     resetFilters: "Zrušit filtry",
@@ -83,16 +83,16 @@ export const THEME_LABELS = {
     en: "Global & Regional Partnerships",
   },
   alumni: {
-    cs: "Absolventi — uplatnitelnost — dovednosti budoucnosti",
+    cs: "Absolventi — zaměstnatelnost — dovednosti budoucnosti",
     en: "Alumni — Employability — Future Skills",
   },
 };
 
 export const THEME_SHORT = {
-  smart: { cs: "Smart spolupráce", en: "Smart coop." },
+  smart: { cs: "Chytrá spolupráce", en: "Smart coop." },
   internationalisation: { cs: "Intl. pro všechny", en: "Intl. for all" },
   partnerships: { cs: "Partnerství", en: "Partnerships" },
-  alumni: { cs: "Absolventi", en: "Alumni & skills" },
+  alumni: { cs: "Absolventi & dovednosti", en: "Alumni & skills" },
 };
 
 export const SLOT_TITLES = {
@@ -109,11 +109,11 @@ export const SESSION_TITLES = {
     en: "Opening panel",
   },
   "Unlocking Opportunities: European Solidarity Corps programme": {
-    cs: "Otevírání příležitostí: program Evropský sbor solidarity",
+    cs: "Otevírání příležitostí: program Evropského sboru solidarity",
     en: "Unlocking Opportunities: European Solidarity Corps programme",
   },
   "Advancing Strategic Global & Regional Partnerships: Insights and Lessons from European University Alliances": {
-    cs: "Rozvoj strategických globálních a regionálních partnerství: poznatky a lekce z evropských univerzitních aliancí",
+    cs: "Rozvoj strategických globálních a regionálních partnerství: poznatky a poučení z evropských univerzitních aliancí",
     en: "Advancing Strategic Global & Regional Partnerships: Insights and Lessons from European University Alliances",
   },
   "Modern Trends, Technologies, and Tools to Boost International Alumni Relations": {
@@ -121,7 +121,7 @@ export const SESSION_TITLES = {
     en: "Modern Trends, Technologies, and Tools to Boost International Alumni Relations",
   },
   "The Emerging Role of Inclusion Officers in HEIs and in Erasmus+": {
-    cs: "Vznikající role inclusion officerů na VŠ a v programu Erasmus+",
+    cs: "Rozvíjející se role inkluzivních koordinátorů na VŠ a v programu Erasmus+",
     en: "The Emerging Role of Inclusion Officers in HEIs and in Erasmus+",
   },
   "Smart Tools for Smart Mobility: AI in the Daily Work of International Offices": {
@@ -141,11 +141,11 @@ export const SESSION_TITLES = {
     en: "VE for All - Chances and Challenges of VE in Less Developed Areas",
   },
   "Next Gen Student Communities: Futures Thinking for European Universities": {
-    cs: "Studentské komunity nové generace: futures thinking pro evropské univerzity",
+    cs: "Studentské komunity nové generace: myšlení o budoucnostech pro evropské univerzity",
     en: "Next Gen Student Communities: Futures Thinking for European Universities",
   },
   "But It Really is Our Degree: 20 Years of International Partnership - Lessons Learned": {
-    cs: "Ale je to opravdu náš studijní program: 20 let mezinárodního partnerství – získané zkušenosti",
+    cs: "Ale vždyť je to náš diplom: 20 let mezinárodního partnerství – získané poznatky",
     en: "But It Really is Our Degree: 20 Years of International Partnership - Lessons Learned",
   },
   "Developing Intercultural Competence and Work-Related Skills Thanks to a Virtual Exchange Project": {
@@ -157,15 +157,15 @@ export const SESSION_TITLES = {
     en: "International Credit Mobility: Challenges of Cooperation with Non-EU countries",
   },
   "Creating Together: VSB-TUO's Blended Intensive Programmes in the U!REKA Alliance": {
-    cs: "Společná tvorba: blended intensive programy VSB-TUO v alianci U!REKA",
+    cs: "Tvoříme společně: blended intensive programy VSB-TUO v alianci U!REKA",
     en: "Creating Together: VSB-TUO's Blended Intensive Programmes in the U!REKA Alliance",
   },
   "A Snapshot of National Policies for Internationalisation in Europe Today": {
-    cs: "Snímek národních politik internacionalizace v dnešní Evropě",
+    cs: "Pohled na národní politiky internacionalizace v dnešní Evropě",
     en: "A Snapshot of National Policies for Internationalisation in Europe Today",
   },
   "Embedding Internationalisation for All: Strategies for Systemic Change": {
-    cs: "Zapouštění internacionalizace pro všechny: strategie systémových změn",
+    cs: "Zakotvení internacionalizace pro všechny: strategie systémových změn",
     en: "Embedding Internationalisation for All: Strategies for Systemic Change",
   },
   "Skills in Focus: University-Industry Cooperation in STEM Education": {
@@ -173,7 +173,7 @@ export const SESSION_TITLES = {
     en: "Skills in Focus: University-Industry Cooperation in STEM Education",
   },
   "Questionnaire - Experience from Abroad": {
-    cs: "Dotazník – zkušenost ze zahraničí",
+    cs: "Dotazníkové šetření – zkušenosti ze zahraničí",
     en: "Questionnaire - Experience from Abroad",
   },
   "Quality Assurance in Erasmus Mundus Programmes: Good Practice and Processes": {
@@ -193,7 +193,7 @@ export const SESSION_TITLES = {
     en: "Internationalisation without Mobility: How to Actively Engage Mobility Alumni and Youth Organisations",
   },
   "Enabling Green Mobility: Student Perspectives and University Practices": {
-    cs: "Podpora zelené mobility: perspektivy studentů a praxe univerzit",
+    cs: "Podpora zelené mobility: perspektivy studentů a přístupy univerzit",
     en: "Enabling Green Mobility: Student Perspectives and University Practices",
   },
   "Critical Perspectives on Geopolitical Challenges to Current International Higher Education": {
@@ -201,7 +201,7 @@ export const SESSION_TITLES = {
     en: "Critical Perspectives on Geopolitical Challenges to Current International Higher Education",
   },
   "Building the Case: Why International Students Matter": {
-    cs: "Budování argumentace: proč na zahraničních studentech záleží",
+    cs: "Argumenty v praxi: proč záleží na zahraničních studentech",
     en: "Building the Case: Why International Students Matter",
   },
   "Didactic Erasmus Bingo: A Playful Tool for Evaluating Teaching Methods in Higher Education": {
@@ -209,7 +209,7 @@ export const SESSION_TITLES = {
     en: "Didactic Erasmus Bingo: A Playful Tool for Evaluating Teaching Methods in Higher Education",
   },
   "Empowering Educators: Border-crossing co-creation in the EPICUR Centre for International Teaching and Learning": {
-    cs: "Posílení pedagogů: přeshraniční spolutvorba v EPICUR Centre for International Teaching and Learning",
+    cs: "Posilování pedagogů: přeshraniční spolutvorba v EPICUR Centre for International Teaching and Learning",
     en: "Empowering Educators: Border-crossing co-creation in the EPICUR Centre for International Teaching and Learning",
   },
   "Careers in Chaos: Career Education for a Changing Global Market": {
@@ -221,7 +221,7 @@ export const SESSION_TITLES = {
     en: "Internationalisation and Inclusion: the SENSEI Approach",
   },
   "Shifting the Lens: Rethinking Support for International Students and From Preparation to Reflection: Intercultural Readiness in Action": {
-    cs: "Změna úhlu pohledu: nové myšlení podpory zahraničních studentů a od přípravy k reflexi – interkulturní připravenost v praxi",
+    cs: "Změna perspektivy: přehodnocení podpory zahraničních studentů – od přípravy k reflexi: interkulturní připravenost v praxi",
     en: "Shifting the Lens: Rethinking Support for International Students and From Preparation to Reflection: Intercultural Readiness in Action",
   },
 };
@@ -260,9 +260,9 @@ export function formatFilterCount(lang, count) {
   if (lang === "en") {
     return count === 1 ? "1 session shown" : `${count} sessions shown`;
   }
-  if (count === 1) return "Zobrazena 1 přednáška";
-  if (count >= 2 && count <= 4) return `Zobrazeny ${count} přednášky`;
-  return `Zobrazeno ${count} přednášek`;
+  if (count === 1) return "Zobrazen 1 příspěvek";
+  if (count >= 2 && count <= 4) return `Zobrazeny ${count} příspěvky`;
+  return `Zobrazeno ${count} příspěvků`;
 }
 
 export function formatSessionAria(lang, title, time, rooms) {
