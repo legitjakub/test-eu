@@ -177,11 +177,17 @@
 }
 
 .site-footer__logo-link {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .site-footer__logo-link:hover {
-  opacity: 1;
+  opacity: 0.88;
+}
+
+.site-footer__logo {
+  height: 52px;
+  width: auto;
+  max-width: none;
 }
 
 /* ── 10. Modal – jemnější animace ── */
