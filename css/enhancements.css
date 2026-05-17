@@ -433,26 +433,60 @@ body {
   flex-shrink: 0;
 }
 
-/* Tělo karty – zarovnání vlevo */
+/* Tělo karty – tag nahoře, název pod ním (column) */
 .session__body {
+  flex: 1;
+  flex-direction: column;
   align-items: flex-start;
-  padding: 0.5rem 0.6rem;
+  justify-content: flex-start;
   gap: 0.25rem;
+  padding: 0.45rem 0.55rem;
+  min-height: 0;
 }
 
-/* Tag – vlevo nahoře */
 .session__tag {
+  flex: 0 0 auto;
   align-self: flex-start;
+  margin: 0;
   font-size: 0.6rem;
+  font-weight: 400;
   padding: 0.1rem 0.4rem;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
-/* Titulek – vlevo */
 .session__title {
+  flex: 0 0 auto;
+  min-width: 0;
+  margin: 0;
   text-align: left;
-  font-size: clamp(0.6rem, 0.72vw, 0.8125rem);
-  font-weight: 600;
-  color: var(--slate-800);
+  font-size: clamp(0.6875rem, 0.72vw, 0.8125rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--slate-700);
+}
+
+/* Buňka gridu – session začíná od vrcholu */
+.program-grid__cell--session {
+  align-items: stretch;
+}
+
+.program-grid__cell--session .session {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* Tag nesmizet na úzkém gridu – jinak by text začínal jinde */
+@media (min-width: 900px) and (max-width: 1099px) {
+  .program-grid .session__tag {
+    display: inline-block !important;
+    font-size: 0.55rem;
+    padding: 0.08rem 0.3rem;
+  }
+
+  .program-grid .session__title {
+    font-size: 0.6875rem;
+  }
 }
 
 /* Hover efekt */
