@@ -1,73 +1,39 @@
-# CEEDUCON – Program konference
+# Program konference CEEDUCON
 
-Responzivní webová stránka s programem konference podle zadání DZS (pozice Webmaster/ka).
+Úkol pro pozici Webmaster/ka v DZS – responzivní zobrazení programu konference podle přiložené tabulky.
 
-## Spuštění
+## Jak to spustit
 
-Stránka načítá data z JSON – je potřeba lokální server (kvůli `fetch`):
+Stránka bere data z JSON přes `fetch`, takže nestačí jen otevřít soubor v prohlížeči. Stačí jednoduchý lokální server:
 
 ```bash
-# Python
 python3 -m http.server 8080
-
-# nebo npx
-npx serve .
 ```
 
-Poté otevřete [http://localhost:8080](http://localhost:8080).
+Pak [http://localhost:8080](http://localhost:8080). Případně `npx serve .`.
 
-## Struktura
+## Co je v repozitáři
 
-| Soubor | Účel |
-|--------|------|
-| `index.html` | Kostra stránky, filtry, legenda |
-| `data/program.json` | **Editovatelná data** – časy, místnosti, přednášky, témata |
-| `css/styles.css` | Vizuální styl (inspirovaný přiloženým obrázkem) |
-| `js/program.js` | Vykreslení tabulky + mobilní karty, filtry, i18n |
+- `data/program.json` – samotný program (časy, místnosti, přednášky, témata)
+- `index.html` – kostra stránky
+- `css/` – styly (`styles.css` + `enhancements.css`)
+- `js/` – vykreslení programu, filtry, překlady, modal
+- `assets/` – logo DZS, font Tabac Sans, favicon
 
-## Popis řešení (zadání)
+## Jak jsem to řešil
 
-### Jak jsem nad řešením přemýšlel/a
+Program je v podstatě tabulka čas × místnost. Na širší obrazovce jsem nechal mřížku podobnou příloze z zadání, na mobilu by ale stejná tabulka byla nepoužitelná – tam je program jako časová osa s kartami pod sebou.
 
-Program konference je v podstatě **matice čas × místnost**. Na desktopu je nejpřehlednější tabulkové zobrazení (jako na obrázku), na mobilu by ale stejná tabulka byla nečitelná – proto jsem zvolil **dvě reprezentace stejných dat**: mřížku pro široké obrazovky a časové bloky s kartami pro mobil.
+Data jsou v JSON odděleně od vzhledu. Když se změní přednáška nebo čas, stačí upravit `program.json`, nemusí se sahat do HTML. Do budoucna by šlo stejnou strukturu generovat z WordPressu (ACF repeater nebo vlastní endpoint) – záměrně jsem to neřešil přes šablonu, ale přes čistý front-end bez buildu.
 
-Data jsou oddělena od prezentace v `program.json`, aby šel program upravovat bez zásahu do HTML/CSS.
+Vizuál jsem nekopíroval pixel po pixelu z obrázku v zadání. Chtěl jsem spíš něco blíž webu DZS – světlejší pozadí, čitelná typografie, barvy podle témat přednášek. Inspiroval jsem se i weby z přílohy (evropskydobrovolnik.cz, schoolink.cz).
 
-### Proč daná struktura a technický postup
+Filtry podle místnosti a tématu plus vyhledávání v názvech dávají smysl u tak velkého programu. Po kliknutí na přednášku se otevře detail a odkaz do Google kalendáře. Tisk/PDF řeším přes `window.print()` a vlastní print styly.
 
-- **JSON jako zdroj pravdy** – snadná údržba, možnost později napojit na CMS/WordPress REST API.
-- **Vanilla HTML/CSS/JS** – žádná závislost na buildu, rychlé nasazení, snadné předání.
-- **Sémantické HTML** (`header`, `main`, `section`, role pro tabulku) kvůli přístupnosti a SEO.
-- **CSS Grid** pro desktopovou mřížku – flexibilní `colspan` přes `grid-column`.
+Přidal jsem i češtinu a angličtinu – originální názvy přednášek jsou anglicky v JSON, české verze jsou v `js/i18n.js`.
 
-### Responzivita
+Live režim (zvýraznění aktuálního času) a přepínání více dnů jsem neimplementoval – u jednodenního programu to nepřišlo nutné, ale šlo by to doplnit (`day` u slotů v JSON + přepínač v UI).
 
-- **≥ 1024 px**: horizontálně scrollovatelná mřížka 9 sloupců (čas + 8 místností), sticky sloupec času.
-- **< 1024 px**: vertikální timeline – každý časový blok obsahuje karty s místností, tématem a názvem přednášky.
-- Typografie a mezery přes `clamp()` a flexibilní layout filtrů.
+## Poznámka k úpravě programu
 
-### Možnosti dalšího rozvoje
-
-| Funkce | Stav | Poznámka |
-|--------|------|----------|
-| Filtrování místnosti / tématu / hledání | ✅ | Chips + vyhledávání, počítadlo zobrazených přednášek |
-| Modal přednášky + Google Calendar | ✅ | Klik na přednášku, přidání do kalendáře |
-| Tisk / PDF | ✅ | `@media print` + tlačítko `window.print()` |
-| CS / EN překlady | ✅ | Přepínač jazyka, titulky přednášek v `js/i18n.js` |
-| Vícedenní program | 🔜 | V JSON přidat pole `day` u slotů + přepínač dnů v UI |
-| WordPress integrace | 🔜 | Custom post type nebo ACF repeater generující stejný JSON |
-| Export PDF server-side | 🔜 | Např. Puppeteer pro přesnější PDF než tisk z prohlížeče |
-
-## Úprava programu
-
-Upravte `data/program.json`:
-
-- `slots` – časové bloky (`start`, `end`)
-- `type: "break"` + `span: "all"` pro přestávky přes celou šířku
-- `type: "plenary"` + `rooms: ["C1","C2","C3"]` pro sloučené buňky
-- `sessions` – pole přednášek s `rooms`, `title`, `theme` (id z `themes`)
-
-## Reference
-
-- Zadání: program podle přiloženého obrázku (ceeducon.cz)
-- Inspirační weby: [evropskydobrovolnik.cz](https://www.evropskydobrovolnik.cz/), [schoolink.cz](https://schoolink.cz/)
+V `program.json` jsou sloty s typem `break` (přes celou šířku), `plenary` (sloučené místnosti) nebo běžné `sessions` s přiřazením k místnostem a tématu.

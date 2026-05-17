@@ -353,7 +353,6 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;");
 }
 
-/** Název na prvním řádku (bold), popis na druhém */
 function formatSessionTitleHTML(title) {
   const colonIdx = title.indexOf(":");
   if (colonIdx === -1) {

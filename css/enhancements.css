@@ -1,6 +1,6 @@
-/* CEEDUCON – DZS brand alignment & animation layer */
 
-/* ── 0. Tabac Sans – DZS corporate font ── */
+
+
 @font-face {
   font-family: "Tabac Sans";
   src:
@@ -21,27 +21,27 @@
   font-display: swap;
 }
 
-/* Nahradit font v celém projektu */
+
 :root {
   --font: "Tabac Sans", "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
-/* ── Base – dle DZS (html 16px, body Tabac Sans 16px) ── */
+
 html {
   font-size: 16px;
 }
 
 body {
   font-family: var(--font);
-  font-size: 1rem;        /* 16px */
+  font-size: 1rem;        
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0;
-  color: #161616;          /* DZS body color */
+  color: #161616;          
 }
 
-/* ── H1 – název konference v headeru ── */
-/* DZS: 3.25rem / 4.5rem / 700 / letter-spacing 1px, mobile 2.125rem / 3rem */
+
+
 .site-header__title {
   font-family: var(--font);
   font-weight: 700;
@@ -51,117 +51,117 @@ body {
   margin: 0;
 }
 
-/* Eyebrow – CEEDUCON 2026 (malá uppercase) */
+
 .site-header__eyebrow {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 0.75rem;       /* 12px */
+  font-size: 0.75rem;       
   line-height: 1.5;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin: 0.2rem 0 0;
 }
 
-/* ── Záhlaví sekcí / popisky filtrů (H4 ekvivalent) ── */
+
 .filter-tags__label {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 0.75rem;       /* 12px */
+  font-size: 0.75rem;       
   line-height: 1.5;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--blue-900);
 }
 
-/* Hint nad filtry */
+
 .legend-panel__hint {
   font-family: var(--font);
-  font-size: 0.875rem;      /* 14px – DZS small body */
+  font-size: 0.875rem;      
   font-weight: 400;
 }
 
-/* Filtrovací chipy – DZS small body */
+
 .legend__chip {
   font-family: var(--font);
   font-weight: 400;
-  font-size: 0.875rem;      /* 14px */
+  font-size: 0.875rem;      
   line-height: 1.4;
 }
 
-/* ── Grid – záhlaví místností ── */
+
 .program-grid__cell--room {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 0.875rem;      /* 14px */
+  font-size: 0.875rem;      
   line-height: 1.3;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-/* Časové buňky */
+
 .program-grid__cell--time {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 0.8125rem;     /* 13px */
+  font-size: 0.8125rem;     
   line-height: 1.3;
 }
 
 .program-grid__cell--time span:last-child {
   font-weight: 400;
-  font-size: 0.6875rem;     /* 11px */
+  font-size: 0.6875rem;     
 }
 
-/* Session title – tělo přednášky */
+
 .session__title {
   font-family: var(--font);
   font-weight: 400;
-  font-size: 0.8125rem;     /* 13px */
+  font-size: 0.8125rem;     
   line-height: 1.4;
   letter-spacing: 0;
 }
 
-/* Session tag – téma */
+
 .session__tag {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 0.625rem;      /* 10px */
+  font-size: 0.625rem;      
   line-height: 1.4;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-/* Break / přestávka */
+
 .program-grid__cell--break,
 .program-grid__cell--plenary {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 0.875rem;      /* 14px */
+  font-size: 0.875rem;      
   line-height: 1.4;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-style: normal;
 }
 
-/* ── Vyhledávání (DZS body 16px) ── */
+
 .toolbar__input {
   font-family: var(--font);
-  font-size: 1rem;          /* 16px */
+  font-size: 1rem;          
   font-weight: 400;
   line-height: 1.5;
 }
 
-/* ── Tlačítka – DZS button styl ── */
+
 .btn,
 .lang-switch__btn {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 0.8125rem;     /* 13px */
+  font-size: 0.8125rem;     
   line-height: 1.2;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-/* Filter reset – stejný styl */
+
 .filter-reset {
   font-family: var(--font);
   font-weight: 700;
@@ -170,10 +170,10 @@ body {
   text-transform: uppercase;
 }
 
-/* ── Patička ── */
+
 .site-footer__text {
   font-family: var(--font);
-  font-size: 0.875rem;      /* 14px */
+  font-size: 0.875rem;      
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0;
@@ -181,23 +181,23 @@ body {
 
 .site-footer__eu {
   font-family: var(--font);
-  font-size: 0.75rem;       /* 12px */
+  font-size: 0.75rem;       
   font-weight: 400;
   line-height: 1.5;
 }
 
-/* ── Modal ── */
+
 .session-modal__title {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 1.5rem;        /* 24px – DZS h3 */
+  font-size: 1.5rem;        
   line-height: 1.3;
   letter-spacing: 0;
 }
 
 .session-modal__meta {
   font-family: var(--font);
-  font-size: 0.875rem;      /* 14px */
+  font-size: 0.875rem;      
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -210,10 +210,10 @@ body {
   line-height: 1.5;
 }
 
-/* Empty state */
+
 .empty-state__title {
   font-family: var(--font);
-  font-size: 1.125rem;      /* 18px – DZS h4 */
+  font-size: 1.125rem;      
   font-weight: 700;
   line-height: 1.4;
 }
@@ -224,21 +224,21 @@ body {
   font-weight: 400;
 }
 
-/* ── 1. Palette cleanup – institutional over startup ── */
+
 :root {
-  --blue-50: #f2f5f9;        /* čistá modrošedá místo teplé béžové */
+  --blue-50: #f2f5f9;        
   --slate-100: #edf1f6;
   --slate-200: #dce3ed;
 }
 
-/* Odstraň startup-style blobsy, nahraď čistým DZS gradientem */
+
 .page-bg {
   background:
     linear-gradient(180deg, rgba(15, 51, 88, 0.055) 0%, rgba(15, 51, 88, 0.02) 35%, transparent 70%),
     var(--blue-50);
 }
 
-/* ── 2. DZS top accent strip ── */
+
 .dzs-topbar {
   position: fixed;
   top: 0;
@@ -249,7 +249,7 @@ body {
   background: linear-gradient(90deg, var(--blue-900) 0%, var(--blue-700) 55%, var(--orange-400) 100%);
 }
 
-/* ── 3. Header ── */
+
 .site-header {
   background: linear-gradient(180deg, rgba(228, 237, 247, 0.95) 0%, rgba(248, 246, 244, 0.6) 60%, transparent 100%);
   padding-bottom: 1.25rem;
@@ -292,9 +292,9 @@ body {
   color: var(--orange-500);
 }
 
-/* ── 4. Header toolbar – barevné akce ── */
 
-/* Wrapper – lehký průhledný rámeček místo šedé pilulky */
+
+
 .header-tools {
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid rgba(15, 51, 88, 0.12);
@@ -302,7 +302,7 @@ body {
   gap: 0.2rem;
 }
 
-/* Jazykové tlačítko – neaktivní */
+
 .lang-switch__btn {
   color: var(--blue-800);
   font-weight: 700;
@@ -314,14 +314,14 @@ body {
   color: var(--blue-900);
 }
 
-/* CS – aktivní: DZS červená */
+
 .lang-switch__btn.is-active[data-lang="cs"] {
   background: #e8273a;
   color: #fff;
   box-shadow: none;
 }
 
-/* EN – aktivní: DZS modrá */
+
 .lang-switch__btn.is-active[data-lang="en"] {
   background: var(--blue-700);
   color: #fff;
@@ -332,7 +332,7 @@ body {
   filter: brightness(1.08);
 }
 
-/* Tisk – zvýrazněné tlačítko */
+
 .btn--tool {
   background: var(--orange-400);
   color: var(--blue-900);
@@ -353,7 +353,7 @@ body {
   color: var(--white);
 }
 
-/* ── 5. Panel stagger – entrance animace pro každý blok ── */
+
 @keyframes panel-in {
   from {
     opacity: 0;
@@ -377,7 +377,7 @@ body {
   animation: panel-in 0.45s 0.27s ease both;
 }
 
-/* ── 5. Filtry – lepší interakce ── */
+
 .legend__chip {
   transition:
     background var(--transition),
@@ -396,27 +396,27 @@ body {
     0 2px 8px rgba(15, 51, 88, 0.12);
 }
 
-/* Room chipy – aktivní stav */
+
 .room-chip.is-active {
   box-shadow:
     inset 0 0 0 2px var(--blue-700),
     0 2px 6px rgba(15, 51, 88, 0.14);
 }
 
-/* Tlačítko reset filtrů – jemnější přechod */
+
 .filter-reset {
   transition: var(--transition);
 }
 
-/* ── 6. Záhlaví místností – původní modrý gradient ── */
+
 .program-grid__cell--room {
   background: linear-gradient(180deg, var(--blue-800), var(--blue-900));
   letter-spacing: 0.03em;
 }
 
-/* ── 7. Session karty – levý barevný pruh + moderní layout ── */
+
 .session {
-  flex-direction: row;          /* bar vlevo místo nahoře */
+  flex-direction: row;          
   border-radius: 10px;
   overflow: hidden;
   transition:
@@ -425,7 +425,7 @@ body {
     background 0.15s ease;
 }
 
-/* Vertikální barevný pruh vlevo */
+
 .session__bar {
   width: 4px;
   height: auto;
@@ -433,7 +433,7 @@ body {
   flex-shrink: 0;
 }
 
-/* Tělo karty – tag nahoře, název pod ním (column) */
+
 .session__body {
   flex: 1;
   width: 0;
@@ -475,7 +475,7 @@ body {
   overflow: hidden;
 }
 
-/* Řádek 1 – název přednášky */
+
 .session__title-name {
   display: block;
   font-weight: 700;
@@ -487,7 +487,7 @@ body {
   margin-bottom: 0;
 }
 
-/* Řádek 2 – podtitul */
+
 .session__title-desc {
   display: block;
   font-weight: 400;
@@ -495,7 +495,7 @@ body {
   font-size: 0.92em;
 }
 
-/* Mobil – větší a vzdušnější */
+
 .mobile-card__title {
   line-height: 1.5;
 }
@@ -515,7 +515,7 @@ body {
   font-size: 0.95em;
 }
 
-/* Buňka gridu – session začíná od vrcholu */
+
 .program-grid__cell--session {
   align-items: stretch;
 }
@@ -525,7 +525,7 @@ body {
   justify-content: flex-start;
 }
 
-/* Úzký grid – čitelnější minimum */
+
 @media (min-width: 900px) and (max-width: 1099px) {
   .program-grid .session__tag {
     display: inline-block !important;
@@ -553,14 +553,14 @@ body {
   }
 }
 
-/* Hover efekt */
+
 .session--interactive:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(15, 51, 88, 0.13);
   filter: brightness(0.97);
 }
 
-/* ── Časové buňky – navy místo oranžové ── */
+
 .program-grid__cell--time {
   background: var(--blue-900);
   color: rgba(255, 255, 255, 0.95);
@@ -573,7 +573,7 @@ body {
   font-weight: 400;
 }
 
-/* ── Break buňky – čistší ── */
+
 .program-grid__cell--break {
   background: linear-gradient(90deg, var(--orange-100) 0%, rgba(248, 246, 244, 0.6) 100%);
   color: var(--blue-900);
@@ -582,7 +582,7 @@ body {
   border-bottom: 1px solid rgba(198, 144, 16, 0.2);
 }
 
-/* ── Prázdné buňky – jemný vzor ── */
+
 .program-grid__cell--empty {
   background-image: repeating-linear-gradient(
     45deg,
@@ -594,17 +594,12 @@ body {
   background-color: var(--blue-50);
 }
 
-/* ══════════════════════════════════════════
-   MOBILNÍ TIMELINE – kompletní upgrade
-   ══════════════════════════════════════════ */
-
-/* Větší odsazení pro lepší timeline geometrii */
 .time-block {
   padding-left: 2.75rem;
   padding-bottom: 2rem;
 }
 
-/* Vertikální čára – DZS navy, plynulý gradient dolů */
+
 .time-block::before {
   left: 10px;
   width: 2px;
@@ -617,7 +612,7 @@ body {
   top: 2.6rem;
 }
 
-/* Timeline dot – výraznější, s pulzním efektem při reveal */
+
 .time-block::after {
   left: 3px;
   top: 1.25rem;
@@ -628,7 +623,7 @@ body {
   box-shadow: 0 0 0 3px rgba(24, 86, 140, 0.12);
 }
 
-/* Čas – pill badge vedle dotu */
+
 .time-block__time {
   display: inline-block;
   background: var(--blue-900);
@@ -641,12 +636,12 @@ body {
   line-height: 1.4;
 }
 
-/* Header – zarovnat dot + badge */
+
 .time-block__header {
   margin-bottom: 0.85rem;
 }
 
-/* Karty – moderní design */
+
 .mobile-card {
   border-radius: 12px;
   border: 1px solid var(--slate-200);
@@ -667,7 +662,7 @@ body {
   transform: scale(0.985);
 }
 
-/* Break karta – zlatavá místo šedé */
+
 .mobile-card--break {
   background: var(--orange-100);
   border: 1px dashed rgba(198, 144, 16, 0.5);
@@ -678,7 +673,7 @@ body {
   color: var(--blue-900);
 }
 
-/* Místnost badge – modernější */
+
 .mobile-card__room {
   font-weight: 700;
   font-size: 0.75rem;
@@ -689,7 +684,7 @@ body {
   border-radius: 4px;
 }
 
-/* Téma badge */
+
 .mobile-card__theme {
   font-weight: 400;
   font-size: 0.6875rem;
@@ -697,7 +692,7 @@ body {
   border-radius: 4px;
 }
 
-/* Název – DZS typografie */
+
 .mobile-card__title {
   font-family: var(--font);
   font-weight: 400;
@@ -706,7 +701,7 @@ body {
   color: var(--slate-900);
 }
 
-/* Reveal animace – karty přijedou zleva */
+
 .reveal-on-scroll.mobile-card {
   opacity: 0;
   transform: translateX(-12px) translateY(6px);
@@ -717,7 +712,7 @@ body {
   transform: translateX(0) translateY(0);
 }
 
-/* Dot pulsuje po reveal */
+
 @keyframes dot-pulse {
   0%   { box-shadow: 0 0 0 0   rgba(24, 86, 140, 0.35); }
   60%  { box-shadow: 0 0 0 8px rgba(24, 86, 140, 0); }
@@ -740,7 +735,7 @@ body {
   }
 }
 
-/* ── 8. Search input refinement ── */
+
 .toolbar__input {
   background: var(--white);
   border-color: var(--slate-200);
@@ -752,7 +747,7 @@ body {
   box-shadow: 0 0 0 3px rgba(24, 86, 140, 0.14);
 }
 
-/* ── 9. Footer – DZS institutional styl ── */
+
 .site-footer {
   background: var(--white);
   border-top: 3px solid var(--blue-900);
@@ -784,7 +779,7 @@ body {
   max-width: none;
 }
 
-/* ── 10. Modal – jemnější animace ── */
+
 .session-modal__dialog {
   animation: modal-in 0.25s cubic-bezier(0.34, 1.4, 0.64, 1) both;
 }
@@ -800,7 +795,7 @@ body {
   }
 }
 
-/* ── Reduced motion ── */
+
 @media (prefers-reduced-motion: reduce) {
   .site-header.header-enter,
   .program > .panel,
@@ -814,7 +809,7 @@ body {
   }
 }
 
-/* ── Print ── */
+
 @media print {
   .dzs-topbar {
     display: none;

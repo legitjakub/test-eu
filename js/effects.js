@@ -1,7 +1,3 @@
-/**
- * Schedule UI effects – reveal animations, session modal
- */
-
 import { buildGoogleCalendarUrl } from "./calendar.js";
 
 function prefersReducedMotion() {
