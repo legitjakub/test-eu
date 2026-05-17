@@ -13,14 +13,6 @@ import { createEffects } from "./effects.js";
 
 const ROOMS = ["C1", "C2", "C3", "D2", "D3+D4", "D6+D7", "E1", "E2"];
 const DESKTOP_MQ = window.matchMedia("(min-width: 900px)");
-const CLOCK_SVG = `<svg class="program-grid__time-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`;
-const SLOT_ICONS = {
-  registration: "📋",
-  "coffee-1": "☕",
-  "coffee-2": "☕",
-  lunch: "🍽",
-  opening: "🎤",
-};
 let effects = null;
 
 const state = {
@@ -34,7 +26,6 @@ const els = {
   legend: document.getElementById("legend"),
   roomChips: document.getElementById("room-chips"),
   grid: document.getElementById("program-grid"),
-  gridHeader: document.getElementById("program-grid-header"),
   mobile: document.getElementById("program-mobile"),
   empty: document.getElementById("program-empty"),
   filterReset: document.getElementById("filter-reset"),
@@ -121,8 +112,6 @@ function applyStaticI18n() {
     el.setAttribute("aria-label", t(el.dataset.i18nAria));
   });
 
-  const backToTop = document.getElementById("back-to-top");
-  if (backToTop) backToTop.setAttribute("aria-label", t("backToTop"));
 }
 
 function syncLangButtons() {
@@ -317,38 +306,9 @@ function hexToRgba(hex, alpha) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-function darkenHex(hex, amount = 0.2) {
-  const h = hex.replace("#", "");
-  const r = Math.max(0, Math.round(parseInt(h.slice(0, 2), 16) * (1 - amount)));
-  const g = Math.max(0, Math.round(parseInt(h.slice(2, 4), 16) * (1 - amount)));
-  const b = Math.max(0, Math.round(parseInt(h.slice(4, 6), 16) * (1 - amount)));
-  return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
-}
-
-function getSlotIcon(slot) {
-  return SLOT_ICONS[slot.id] || "";
-}
-
-function formatTimeCellHtml(slot) {
-  return `${CLOCK_SVG}<span>${slot.start}</span><span>${slot.end}</span>`;
-}
-
-function buildBreakLabel(slot) {
-  const icon = getSlotIcon(slot);
-  const title = getSlotTitle(slot, state.lang);
-  return icon
-    ? `<span class="program-grid__slot-icon" aria-hidden="true">${icon}</span><span>${title}</span>`
-    : title;
-}
-
-function buildSessionTooltip(title, time, rooms, themeLabel) {
-  return `${time} · ${rooms}${themeLabel ? ` · ${themeLabel}` : ""}`;
-}
-
 function buildSessionHTML(session, slot) {
   const theme = getTheme(session.theme);
   const color = theme?.color || "#94a3b8";
-  const colorDark = darkenHex(color, 0.22);
   const short = getThemeShort(session.theme, state.lang);
   const title = getSessionTitle(session, state.lang);
   const time = `${slot.start} – ${slot.end}`;
@@ -356,13 +316,11 @@ function buildSessionHTML(session, slot) {
   const themeLabel = getThemeLabel(session.theme, state.lang);
   const eventDate = state.data?.event?.date || "";
   const ariaLabel = formatSessionAria(state.lang, title, time, rooms);
-  const tooltip = buildSessionTooltip(title, time, rooms, themeLabel);
   return `
     <article
       class="session session--interactive"
-      style="background:${hexToRgba(color, 0.06)};--tag-c1:${color};--tag-c2:${colorDark}"
+      style="background:${hexToRgba(color, 0.06)}"
       aria-label="${escapeAttr(ariaLabel)}"
-      data-tooltip="${escapeAttr(tooltip)}"
       data-session-trigger
       data-session-title="${escapeAttr(title)}"
       data-session-time="${escapeAttr(time)}"
@@ -377,7 +335,7 @@ function buildSessionHTML(session, slot) {
     >
       <span class="session__bar" style="background:${color}"></span>
       <div class="session__body">
-        ${short ? `<span class="session__tag session__tag--gradient">${short}</span>` : ""}
+        ${short ? `<span class="session__tag" style="background:${hexToRgba(color, 0.15)};color:${color}">${short}</span>` : ""}
         <span class="session__title">${title}</span>
       </div>
     </article>`;
@@ -402,42 +360,30 @@ function buildRoomCellMap(slot) {
   return map;
 }
 
-function setGridColumns(grid, singleRoom) {
-  grid.classList.toggle("program-grid--single-room", singleRoom);
-}
-
 function renderGrid() {
   const grid = els.grid;
-  const headerGrid = els.gridHeader;
-  if (!grid) return;
-
   grid.innerHTML = "";
-  if (headerGrid) headerGrid.innerHTML = "";
   grid.setAttribute("aria-label", t("gridAria"));
 
   const onlyRoom = state.filters.room;
   const visibleRooms = onlyRoom ? [onlyRoom] : ROOMS;
   const roomCount = visibleRooms.length;
-  const singleRoom = Boolean(onlyRoom);
 
-  setGridColumns(grid, singleRoom);
-  if (headerGrid) setGridColumns(headerGrid, singleRoom);
+  grid.classList.toggle("program-grid--single-room", Boolean(onlyRoom));
 
-  if (headerGrid) {
-    const corner = document.createElement("div");
-    corner.className = "program-grid__cell program-grid__cell--corner";
-    corner.setAttribute("role", "columnheader");
-    corner.textContent = t("timeRoom");
-    headerGrid.appendChild(corner);
+  const corner = document.createElement("div");
+  corner.className = "program-grid__cell program-grid__cell--corner";
+  corner.setAttribute("role", "columnheader");
+  corner.textContent = t("timeRoom");
+  grid.appendChild(corner);
 
-    visibleRooms.forEach((room) => {
-      const cell = document.createElement("div");
-      cell.className = "program-grid__cell program-grid__cell--room";
-      cell.setAttribute("role", "columnheader");
-      cell.textContent = room;
-      headerGrid.appendChild(cell);
-    });
-  }
+  visibleRooms.forEach((room) => {
+    const cell = document.createElement("div");
+    cell.className = "program-grid__cell program-grid__cell--room";
+    cell.setAttribute("role", "columnheader");
+    cell.textContent = room;
+    grid.appendChild(cell);
+  });
 
   let visibleSlots = 0;
 
@@ -451,7 +397,7 @@ function renderGrid() {
     timeCell.setAttribute("role", "rowheader");
     timeCell.dataset.slotId = slot.id;
     timeCell.style.gridColumn = "1";
-    timeCell.innerHTML = formatTimeCellHtml(slot);
+    timeCell.innerHTML = `<span>${slot.start}</span><span>${slot.end}</span>`;
     grid.appendChild(timeCell);
 
     if (slot.span === "all") {
@@ -459,7 +405,7 @@ function renderGrid() {
       cell.className = "program-grid__cell program-grid__cell--break";
       cell.style.gridColumn = `2 / span ${roomCount}`;
       cell.dataset.slotId = slot.id;
-      cell.innerHTML = buildBreakLabel(slot);
+      cell.textContent = getSlotTitle(slot, state.lang);
       grid.appendChild(cell);
       return;
     }
@@ -473,7 +419,7 @@ function renderGrid() {
           : "program-grid__cell program-grid__cell--empty";
         cell.style.gridColumn = "2";
         cell.dataset.slotId = slot.id;
-        if (inPlenary) cell.innerHTML = buildBreakLabel(slot);
+        if (inPlenary) cell.textContent = getSlotTitle(slot, state.lang);
         grid.appendChild(cell);
         return;
       }
@@ -492,7 +438,7 @@ function renderGrid() {
       cell.className = "program-grid__cell program-grid__cell--plenary";
       cell.style.gridColumn = `${startIdx} / span ${slot.rooms.length}`;
       cell.dataset.slotId = slot.id;
-      cell.innerHTML = buildBreakLabel(slot);
+      cell.textContent = getSlotTitle(slot, state.lang);
       grid.appendChild(cell);
 
       for (let col = endIdx; col <= ROOMS.length + 1; col++) {
@@ -614,11 +560,7 @@ function renderMobile() {
         card.dataset.sessionEnd = slot.end;
         card.dataset.sessionDate = state.data?.event?.date || "";
         card.dataset.sessionRooms = session.rooms.join(", ");
-        const themeLabel = getThemeLabel(session.theme, state.lang);
-        const themeShort = getThemeShort(session.theme, state.lang) || themeLabel;
-        const colorDark = darkenHex(color, 0.22);
-        card.style.setProperty("--card-accent", color);
-        card.dataset.sessionTheme = themeLabel;
+        card.dataset.sessionTheme = getThemeLabel(session.theme, state.lang);
         card.dataset.sessionThemeColor = color;
         card.setAttribute("tabindex", "0");
         card.setAttribute("role", "button");
@@ -627,7 +569,7 @@ function renderMobile() {
           <div class="mobile-card__content">
             <p class="mobile-card__meta">
               <span class="mobile-card__room">${session.rooms.join(", ")}</span>
-              <span class="session__tag session__tag--gradient mobile-card__theme" style="--tag-c1:${color};--tag-c2:${colorDark}">${themeShort}</span>
+              <span class="mobile-card__theme" style="background:${hexToRgba(color, 0.12)};color:${color}">${getThemeShort(session.theme, state.lang) || getThemeLabel(session.theme, state.lang)}</span>
             </p>
             <h3 class="mobile-card__title">${title}</h3>
           </div>`;
@@ -655,14 +597,12 @@ function render() {
   } else {
     renderMobile();
     els.grid.innerHTML = "";
-    if (els.gridHeader) els.gridHeader.innerHTML = "";
   }
   updateFilterStatus();
   effects?.afterRender();
 }
 
 function renderWithFx() {
-  effects?.beforeFilterRender?.();
   render();
   effects?.animateFilterChange();
 }

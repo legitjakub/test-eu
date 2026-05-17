@@ -17,43 +17,6 @@ export function createEffects({ getState, t }) {
     bindModal();
     bindKeyboard();
     updateModalLabels();
-    initPageChrome();
-  }
-
-  function initPageChrome() {
-    const progress = document.getElementById("scroll-progress");
-    const backToTop = document.getElementById("back-to-top");
-
-    if (progress) {
-      const onScroll = () => {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-        progress.style.width = `${pct}%`;
-      };
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
-    }
-
-    if (backToTop) {
-      if (t) backToTop.setAttribute("aria-label", t("backToTop"));
-      const onScrollBtn = () => {
-        const show = window.scrollY > 300;
-        backToTop.classList.toggle("is-visible", show);
-        backToTop.hidden = !show;
-      };
-      window.addEventListener("scroll", onScrollBtn, { passive: true });
-      backToTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
-      });
-      onScrollBtn();
-    }
-  }
-
-  function beforeFilterRender() {
-    const wrap = document.querySelector(".program-grid-wrap");
-    if (!wrap || prefersReducedMotion()) return;
-    wrap.classList.add("is-filtering");
-    window.setTimeout(() => wrap.classList.remove("is-filtering"), 320);
   }
 
   function injectModal() {
@@ -142,24 +105,12 @@ export function createEffects({ getState, t }) {
 
   function closeModal() {
     if (!modalEl) return;
-
-    const finish = () => {
-      modalEl.hidden = true;
-      modalEl.classList.remove("is-closing");
-      document.body.classList.remove("modal-open");
-      if (lastFocused && typeof lastFocused.focus === "function") {
-        lastFocused.focus();
-      }
-      lastFocused = null;
-    };
-
-    if (prefersReducedMotion()) {
-      finish();
-      return;
+    modalEl.hidden = true;
+    document.body.classList.remove("modal-open");
+    if (lastFocused && typeof lastFocused.focus === "function") {
+      lastFocused.focus();
     }
-
-    modalEl.classList.add("is-closing");
-    window.setTimeout(finish, 240);
+    lastFocused = null;
   }
 
   function bindModal() {
@@ -232,44 +183,14 @@ export function createEffects({ getState, t }) {
   function staggerGridRows() {
     if (prefersReducedMotion()) return;
 
-    const timeCells = document.querySelectorAll(".program-grid--body .program-grid__cell--time");
+    const timeCells = document.querySelectorAll(".program-grid__cell--time");
     timeCells.forEach((cell, i) => {
       const slotId = cell.dataset.slotId;
-      const rowCells = document.querySelectorAll(`.program-grid--body [data-slot-id="${slotId}"]`);
+      const rowCells = document.querySelectorAll(`[data-slot-id="${slotId}"]`);
       rowCells.forEach((el) => {
-        el.classList.remove("reveal-row");
-        void el.offsetWidth;
         el.classList.add("reveal-row");
-        el.style.setProperty("--reveal-delay", `${i * 50}ms`);
+        el.style.setProperty("--reveal-delay", `${i * 55}ms`);
       });
-    });
-
-    document.querySelectorAll(".program-grid--body .session--interactive").forEach((session, i) => {
-      session.classList.remove("reveal-session", "is-revealed");
-      session.classList.add("reveal-session");
-      session.style.setProperty("--reveal-delay", `${(i % 8) * 40}ms`);
-    });
-
-    observeSessionReveals();
-  }
-
-  function observeSessionReveals() {
-    if (prefersReducedMotion()) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-revealed");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-
-    document.querySelectorAll(".reveal-session:not(.is-revealed)").forEach((el) => {
-      observer.observe(el);
     });
   }
 
@@ -292,7 +213,6 @@ export function createEffects({ getState, t }) {
   return {
     init,
     afterRender,
-    beforeFilterRender,
     animateFilterChange,
     updateModalLabels,
   };
