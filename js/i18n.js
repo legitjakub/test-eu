@@ -89,10 +89,10 @@ export const THEME_LABELS = {
 };
 
 export const THEME_SHORT = {
-  smart: { cs: "Chytrá spolupráce", en: "Smart coop." },
+  smart: { cs: "Chytrá coop.", en: "Smart coop." },
   internationalisation: { cs: "Intl. pro všechny", en: "Intl. for all" },
   partnerships: { cs: "Partnerství", en: "Partnerships" },
-  alumni: { cs: "Absolventi & dovednosti", en: "Alumni & skills" },
+  alumni: { cs: "Absolventi", en: "Alumni & skills" },
 };
 
 export const SLOT_TITLES = {

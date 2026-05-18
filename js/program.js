@@ -10,6 +10,7 @@ import {
   formatSessionAria,
 } from "./i18n.js";
 import { createEffects } from "./effects.js";
+import { formatSessionTitleHTML } from "./format-title.js";
 
 const ROOMS = ["C1", "C2", "C3", "D2", "D3+D4", "D6+D7", "E1", "E2"];
 const DESKTOP_MQ = window.matchMedia("(min-width: 900px)");
@@ -319,7 +320,7 @@ function buildSessionHTML(session, slot) {
   return `
     <article
       class="session session--interactive"
-      style="background:${hexToRgba(color, 0.06)}"
+      style="background:${hexToRgba(color, 0.06)};border-left:4px solid ${color}"
       aria-label="${escapeAttr(ariaLabel)}"
       data-session-trigger
       data-session-title="${escapeAttr(title)}"
@@ -333,9 +334,8 @@ function buildSessionHTML(session, slot) {
       tabindex="0"
       role="button"
     >
-      <span class="session__bar" style="background:${color}"></span>
       <div class="session__body">
-        ${short ? `<span class="session__tag" style="background:${hexToRgba(color, 0.15)};color:${color}">${short}</span>` : ""}
+        ${short ? `<span class="session__tag" title="${escapeAttr(themeLabel)}" style="background:${hexToRgba(color, 0.15)};color:${color}">${short}</span>` : ""}
         <span class="session__title">${formatSessionTitleHTML(title)}</span>
       </div>
     </article>`;
@@ -343,27 +343,6 @@ function buildSessionHTML(session, slot) {
 
 function escapeAttr(str) {
   return String(str).replace(/"/g, "&quot;");
-}
-
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
-function formatSessionTitleHTML(title) {
-  const colonIdx = title.indexOf(":");
-  if (colonIdx === -1) {
-    return `<span class="session__title-name session__title-name--solo">${escapeHtml(title)}</span>`;
-  }
-  const name = title.slice(0, colonIdx).trim();
-  const desc = title.slice(colonIdx + 1).trim();
-  if (!desc) {
-    return `<span class="session__title-name">${escapeHtml(name)}:</span>`;
-  }
-  return `<span class="session__title-name">${escapeHtml(name)}:</span><span class="session__title-desc">${escapeHtml(desc)}</span>`;
 }
 
 function buildRoomCellMap(slot) {
@@ -585,8 +564,8 @@ function renderMobile() {
         card.dataset.sessionThemeColor = color;
         card.setAttribute("tabindex", "0");
         card.setAttribute("role", "button");
+        card.style.borderLeft = `4px solid ${color}`;
         card.innerHTML = `
-          <span class="mobile-card__bar" style="background:${color}"></span>
           <div class="mobile-card__content">
             <p class="mobile-card__meta">
               <span class="mobile-card__room">${session.rooms.join(", ")}</span>

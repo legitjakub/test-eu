@@ -814,10 +814,6 @@ body {
   box-shadow: none;
 }
 
-.session__bar {
-  height: 3px;
-  flex-shrink: 0;
-}
 
 .session__body {
   flex: 1;
@@ -1143,10 +1139,6 @@ body {
   opacity: 0.2;
 }
 
-.mobile-card__bar {
-  width: 4px;
-  flex-shrink: 0;
-}
 
 .mobile-card__content {
   padding: 0.85rem 1rem;
@@ -1562,7 +1554,7 @@ body {
 .session-modal__title {
   margin: 0 0 1rem;
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.35;
   color: var(--blue-900);
   padding-right: 2rem;
@@ -1753,7 +1745,6 @@ body.modal-open {
 
   .program-grid__cell,
   .session,
-  .session__bar,
   .session__tag {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;

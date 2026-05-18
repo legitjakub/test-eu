@@ -1,4 +1,5 @@
 import { buildGoogleCalendarUrl } from "./calendar.js";
+import { formatSessionTitleHTML } from "./format-title.js";
 
 function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -85,7 +86,7 @@ export function createEffects({ getState, t }) {
     const metaEl = document.getElementById("session-modal-meta");
     const themeEl = document.getElementById("session-modal-theme");
 
-    titleEl.textContent = detail.title;
+    titleEl.innerHTML = formatSessionTitleHTML(detail.title);
     metaEl.innerHTML = `<span>${detail.time}</span> · <span>${detail.rooms}</span>`;
     themeEl.textContent = detail.theme || "";
     themeEl.style.color = detail.themeColor || "";
