@@ -89,7 +89,7 @@ export const THEME_LABELS = {
 };
 
 export const THEME_SHORT = {
-  smart: { cs: "Chytrá coop.", en: "Smart coop." },
+  smart: { cs: "Chytrá spolup.", en: "Smart coop." },
   internationalisation: { cs: "Intl. pro všechny", en: "Intl. for all" },
   partnerships: { cs: "Partnerství", en: "Partnerships" },
   alumni: { cs: "Absolventi", en: "Alumni & skills" },
